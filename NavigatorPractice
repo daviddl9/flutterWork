@@ -1,0 +1,39 @@
+void main() {
+  runApp(MaterialApp(
+    home: new Screen1(),
+    routes: <String, WidgetBuilder> {
+      '/screen1': (BuildContext context) => new Screen1();
+      '/screen2': (BuildContext context) => new Screen2();
+    }
+  ));
+}
+
+class Screen1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: RaisedButton(
+        onPressed: button2(context);
+      )
+    );
+  }
+}
+
+class Screen2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: RaisedButton(
+        onPressed: button1(context);
+      )
+    );
+  }
+}
+
+void button1(BuildContext context) {
+  Navigator.of(context).pushNamed('/screen2');
+}
+
+void button2(BuildContext context) {
+  Navigator.of(context).pop(true);
+}
