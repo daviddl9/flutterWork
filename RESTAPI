@@ -1,0 +1,32 @@
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+void main() {
+
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  createState() => HomePageState();
+  }
+}
+
+class HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    Future<String> getData() async {
+      http.Response response = await http.get(Uri.encodeFull("https://jsonplaceholder.typicode.com/posts")
+      headers: {
+        "key": "kajsdasjkdhasj",
+        "Accept": "application/json"
+      }
+    ),
+    }
+  }
+
+
+List data = JSON.decode(response.body;
+print(data[1]["title"]); //print 2nd element of the array and obtain the value from the key "title"
+
+
+}
