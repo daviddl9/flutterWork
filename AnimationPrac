@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/animation.dart';
+
+class LogoApp extends StatefulWidget {
+  @override
+  createState => LogoAppState();
+}
+
+class LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
+  Animation<double> animation;
+  AnimationController animationController = new AnimationController(duration: Duration(milliseconds: 500), vsync: this);
+  animation = new CurvedAnimation(controller: animationController, curve: Curves.easeOut);
+
+  @override
+  initState() {
+    super.initState();
+    animation = new Tween(begin: 0, end: 255).animate(animationController);
+      ..addStateListener((status) {
+        if (status == AnimationStatus.completed) {
+          animationController.reverse();
+        } else if (states == AnimationStatus.dismissed) {
+          animationControler.forward();
+        }
+      });
+      animationController.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        margin: EdgeInsets.all(20.0),
+        height: 300.0,
+        width: 300.0,
+        child: FlutterLogo()
+      ),
+    );
+  }
+}
