@@ -76,17 +76,6 @@ class _StampState extends State<Stamp> with SingleTickerProviderStateMixin{
 
   }
 
-  Widget _clippedV1(BuildContext context, double card_width, double card_height) {
-    return new ClipPath(
-      clipper: new StampClipper(),
-      child: new Image.asset("assets/test_img.jpg",
-        width: card_width,
-        height: card_height,
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-
   Widget _clippedNetwork(BuildContext context, double card_width, double card_height, double holeRadius) {
     List<Widget> stackChildren = [];
 
@@ -97,20 +86,8 @@ class _StampState extends State<Stamp> with SingleTickerProviderStateMixin{
           fit: BoxFit.cover,
     ));
 
-    if(widget.locked) {
-      stackChildren.add(
-          new Container(
-            color: const Color(0xbb000000),
-            width: card_width,
-            height: card_height,
-          ));
-      stackChildren.add(new Align(alignment: Alignment.center,child: new Icon(Icons.lock, color: Colors.white,)));
-    }
-
-
-
-    return new ClipPath(
-      clipper: new StampClipper(holeRadius: holeRadius),
+    return new Container(
+//      clipper: new StampClipper(holeRadius: holeRadius),
       child: new Container(
         color: Colors.white,
         child: new Align(
@@ -118,42 +95,6 @@ class _StampState extends State<Stamp> with SingleTickerProviderStateMixin{
             child: new Stack(
               children: stackChildren
             )
-        ),
-      ),
-    );
-  }
-
-  Widget _clippedNetwork2(BuildContext context, double card_width, double card_height) {
-    return new Container(
-      color: Colors.white,
-      child: new Align(
-          alignment: Alignment.topCenter,
-          child: new Image.network(widget.imageUrl,
-            width: card_width,
-            height: card_height,
-            fit: BoxFit.cover,
-          )
-      ),
-    );
-  }
-
-  Widget _clippedV2(BuildContext context, double card_width, double card_height) {
-    return new ClipPath(
-      clipper: new StampClipper(),
-      child: new Container(
-        color: Colors.white,
-        child: new Column(
-          children: <Widget>[
-            new Align(
-                alignment: Alignment.topCenter,
-                child: new Image.asset("assets/test_img.jpg",
-                  width: card_width,
-                  height: card_height- 30.0,
-                  fit: BoxFit.cover,
-                )
-            ),
-            new Text("Elon Musk", style: const TextStyle(fontSize: 20.0),),
-          ],
         ),
       ),
     );
@@ -180,43 +121,43 @@ class StampClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = new Path();
 
-    int num = (size.width / holeRadius).round();
-
-    double radius;
-    if(num % 2 == 0) {
-      num++;
-    }
-    radius = size.width / num;
-
-    for(int i = 0; i < num / 2 - 1; i++) {
-      path.relativeLineTo(radius, 0.0);
-      path.relativeArcToPoint(new Offset(radius, 0.0), radius: new Radius.circular(radius / 2), clockwise: false);
-    }
-    path.relativeLineTo(radius, 0.0);
-
-
-    int numVert = (size.height / radius).round();
-    for(int i = 0; i < numVert / 2 - 1; i++) {
-      path.relativeLineTo(0.0, radius);
-      path.relativeArcToPoint(new Offset(0.0, radius), radius: new Radius.circular(radius / 2), clockwise: false);
-    }
-    path.relativeLineTo(0.0, radius);
-
-
-    for(int i = 0; i < num / 2 - 1; i++) {
-      path.relativeLineTo(-radius, 0.0);
-      path.relativeArcToPoint(new Offset(-radius, 0.0), radius: new Radius.circular(radius / 2), clockwise: false);
-    }
-    path.relativeLineTo(-radius, 0.0);
-
-    for(int i = 0; i < numVert / 2 - 1; i++) {
-      path.relativeLineTo(0.0, -radius);
-      path.relativeArcToPoint(new Offset(0.0, -radius), radius: new Radius.circular(radius / 2), clockwise: false);
-    }
-    path.relativeLineTo(0.0, -radius);
-
-
-    path.close();
+//    int num = (size.width / holeRadius).round();
+//
+//    double radius;
+//    if(num % 2 == 0) {
+//      num++;
+//    }
+//    radius = size.width / num;
+//
+//    for(int i = 0; i < num / 2 - 1; i++) {
+//      path.relativeLineTo(radius, 0.0);
+//      path.relativeArcToPoint(new Offset(radius, 0.0), radius: new Radius.circular(radius / 2), clockwise: false);
+//    }
+//    path.relativeLineTo(radius, 0.0);
+//
+//
+//    int numVert = (size.height / radius).round();
+//    for(int i = 0; i < numVert / 2 - 1; i++) {
+//      path.relativeLineTo(0.0, radius);
+//      path.relativeArcToPoint(new Offset(0.0, radius), radius: new Radius.circular(radius / 2), clockwise: false);
+//    }
+//    path.relativeLineTo(0.0, radius);
+//
+//
+//    for(int i = 0; i < num / 2 - 1; i++) {
+//      path.relativeLineTo(-radius, 0.0);
+//      path.relativeArcToPoint(new Offset(-radius, 0.0), radius: new Radius.circular(radius / 2), clockwise: false);
+//    }
+//    path.relativeLineTo(-radius, 0.0);
+//
+//    for(int i = 0; i < numVert / 2 - 1; i++) {
+//      path.relativeLineTo(0.0, -radius);
+//      path.relativeArcToPoint(new Offset(0.0, -radius), radius: new Radius.circular(radius / 2), clockwise: false);
+//    }
+//    path.relativeLineTo(0.0, -radius);
+//
+//
+//    path.close();
 
     return path;
   }

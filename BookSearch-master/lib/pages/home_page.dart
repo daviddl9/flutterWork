@@ -74,21 +74,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               wrapInAnimation(collectionPreview(new Color(0xffffffff), "Biographies", ["wO3PCgAAQBAJ","_LFSBgAAQBAJ","8U2oAAAAQBAJ", "yG3PAK6ZOucC"]), 1),
               wrapInAnimation(collectionPreview(new Color(0xffffffff), "Fiction", ["OsUPDgAAQBAJ", "3e-dDAAAQBAJ", "-ITZDAAAQBAJ","rmBeDAAAQBAJ", "vgzJCwAAQBAJ"]), 2),
               wrapInAnimation(collectionPreview(new Color(0xffffffff), "Mystery & Thriller", ["1Y9gDQAAQBAJ", "Pz4YDQAAQBAJ", "UXARDgAAQBAJ"]), 3),
-              wrapInAnimation(collectionPreview(new Color(0xffffffff), "Sience Ficition", ["JMYUDAAAQBAJ","PzhQydl-QD8C", "nkalO3OsoeMC", "VO8nDwAAQBAJ", "Nxl0BQAAQBAJ"]), 4),
-              new Center(
-                child: new Switch(value: interfaceType != "formal", onChanged: (bool){
-                  setState((){
-                    if(bool) {
-                      interfaceType = "material";
-                    } else {
-                      interfaceType = "formal";
-                    }
-                  });
-                }),
-              ),
-              new Center(
-                //child: new Text("Magic Switch, press for different style", style: const TextStyle(fontSize: 18.0),),
-              ),
+              wrapInAnimation(collectionPreview(new Color(0xffffffff), "Science Fiction", ["JMYUDAAAQBAJ","PzhQydl-QD8C", "nkalO3OsoeMC", "VO8nDwAAQBAJ", "Nxl0BQAAQBAJ"]), 4),
             ],
           ))
         ],
